@@ -7,7 +7,7 @@ import { MainStack } from "../main/main.stack";
 export const RootStack = () => {
   const [appStore] = useContext(AppContext);
 
-  console.log(`appStore`, appStore);
+  // console.log(`appStore`, appStore);
   const { user } = appStore;
 
   const userIsLoggedIn = user.isLoggedIn;
