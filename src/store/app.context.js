@@ -11,6 +11,8 @@ export const AppContextProvider = ({ children }) => {
     loading: false,
     // TODO: Add fav books etc..
     books: [],
+
+    readingList: [],
   };
 
   const [appStore, setAppStore] = useState(initialAppStore);

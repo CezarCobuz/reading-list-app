@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { AppContext } from "../../store/app.context";
 import { BookCardComponent } from "../../components/book-card/book-card.component";
+import { HeaderComponent } from "../../components/header/header.component";
 import { ScrollView } from "react-native-gesture-handler";
 import { Spacing } from "../../components/spacing/spacing.component";
 import { screenGeneralStyle } from "../../style/stylesheet.config";
@@ -20,6 +21,7 @@ export const DiscoverScreen = () => {
 
   return (
     <View style={styles.screen}>
+      <HeaderComponent label="Discover" />
       <ScrollView showsVerticalScrollIndicator={false}>
         {!loading &&
           books.map((book, idx) => {

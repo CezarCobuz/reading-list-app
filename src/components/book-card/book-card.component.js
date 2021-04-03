@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Text, View } from "react-native";
 import {
   colors,
@@ -7,6 +7,7 @@ import {
   fontWeights,
 } from "../../style/stylesheet.config";
 
+import { AppContext } from "../../store/app.context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ScrollRow } from "../scroll-row/scroll-row.component";
 import { Spacing } from "../spacing/spacing.component";
@@ -57,6 +58,9 @@ export const BookCardComponent = ({ book }) => {
   const [stared, setStared] = useState(false);
   const [read, setRead] = useState(false);
 
+  const [appStore, setAppStore] = useContext(AppContext);
+  const { readingList } = appStore;
+
   return (
     <ScrollRow
       mainComponent={
@@ -73,6 +77,17 @@ export const BookCardComponent = ({ book }) => {
           <TouchableOpacity
             style={[styles.outlinedButton, stared ? styles.starSelected : null]}
             onPress={() => {
+              if (stared === false) {
+                // Add to favorites - reading list
+                const newFavorites = [...readingList];
+                if (newFavorites.includes(book) === false) {
+                  newFavorites.push(book);
+                  setAppStore({ ...appStore, readingList: newFavorites });
+                }
+              } else {
+                // Remove from favorites - handle second press
+              }
+
               setStared(!stared);
             }}
           >
@@ -88,6 +103,7 @@ export const BookCardComponent = ({ book }) => {
             style={[styles.outlinedButton, read ? styles.readSelected : null]}
             onPress={() => {
               setRead(!read);
+              // TODO: Remove from reading list
             }}
           >
             <MaterialCommunityIcons
