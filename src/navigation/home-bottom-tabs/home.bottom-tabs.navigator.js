@@ -1,9 +1,9 @@
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors, defaultSpacingUnit } from "../../style/stylesheet.config";
 
 import { BottomTabIconComponent } from "./bottom-tab.icon.component";
 import { DiscoverScreen } from "../../screens/discover/discover.screen";
 import { FinishedBooksScreen } from "../../screens/finished-books/finished-books.screen";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { ReadingListScreen } from "../../screens/reading-list/reading-list.screen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
