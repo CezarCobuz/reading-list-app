@@ -1,9 +1,9 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { colors, defaultSpacingUnit } from "../../style/stylesheet.config";
 
 import { BottomTabIconComponent } from "./bottom-tab.icon.component";
 import { DiscoverScreen } from "../../screens/discover/discover.screen";
 import { FinishedBooksScreen } from "../../screens/finished-books/finished-books.screen";
-import { HomeScreen } from "../../screens/home/home.screen";
 import React from "react";
 import { ReadingListScreen } from "../../screens/reading-list/reading-list.screen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -26,7 +26,7 @@ const getTabOptions = (icon, iconFocussed) => {
  * https://reactnavigation.org/docs/bottom-tab-navigator/#options
  *
  */
-const getTabItemsConfigs = (defaultIconColor, focusedIconColor) => [
+const getTabItemsConfigs = (defaultIconColor, focusedIconColor, iconSize) => [
   /** Reading List */
   {
     tabProperties: {
@@ -36,14 +36,14 @@ const getTabItemsConfigs = (defaultIconColor, focusedIconColor) => [
     icon: (
       <MaterialCommunityIcons
         name="book-open-page-variant"
-        size={32}
+        size={iconSize}
         color={defaultIconColor}
       />
     ),
     iconFocussed: (
       <MaterialCommunityIcons
         name="book-open-page-variant"
-        size={32}
+        size={iconSize}
         color={focusedIconColor}
       />
     ),
@@ -57,14 +57,14 @@ const getTabItemsConfigs = (defaultIconColor, focusedIconColor) => [
     icon: (
       <MaterialCommunityIcons
         name="book-search"
-        size={32}
+        size={iconSize}
         color={defaultIconColor}
       />
     ),
     iconFocussed: (
       <MaterialCommunityIcons
         name="book-search"
-        size={32}
+        size={iconSize}
         color={focusedIconColor}
       />
     ),
@@ -78,14 +78,14 @@ const getTabItemsConfigs = (defaultIconColor, focusedIconColor) => [
     icon: (
       <MaterialCommunityIcons
         name="bookmark-check"
-        size={32}
+        size={iconSize}
         color={defaultIconColor}
       />
     ),
     iconFocussed: (
       <MaterialCommunityIcons
         name="bookmark-check"
-        size={32}
+        size={iconSize}
         color={focusedIconColor}
       />
     ),
@@ -95,12 +95,14 @@ const getTabItemsConfigs = (defaultIconColor, focusedIconColor) => [
 const Tab = createBottomTabNavigator();
 
 export const HomeBottomTabsNavigator = () => {
-  const defaultIconColor = "green";
-  const focusedIconColor = "red";
+  const defaultIconColor = colors.dark;
+  const focusedIconColor = colors.primary.main;
+  const iconSize = defaultSpacingUnit * 2;
 
   const tabItemsConfigs = getTabItemsConfigs(
     defaultIconColor,
-    focusedIconColor
+    focusedIconColor,
+    iconSize
   );
   return (
     <Tab.Navigator
