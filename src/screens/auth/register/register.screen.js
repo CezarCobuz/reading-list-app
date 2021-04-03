@@ -5,27 +5,17 @@ import { AppContext } from "../../../store/app.context";
 import { Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export const LoginScreen = () => {
+export const RegisterScreen = () => {
   const [appStore, setAppStore] = useContext(AppContext);
 
   const navigation = useNavigation();
   return (
     <View style={{ backgroundColor: "coral", flex: 1 }}>
-      <Text style={{ fontSize: 30 }}>LoginScreen</Text>
+      <Text style={{ fontSize: 30 }}>RegisterScreen</Text>
 
       <Button
-        title="Login"
-        onPress={() =>
-          setAppStore({
-            ...appStore,
-            user: { ...appStore.user, isLoggedIn: true },
-          })
-        }
-      />
-
-      <Button
-        title="Register"
-        onPress={() => navigation.navigate("RegisterScreen")}
+        title="Have an account already? Login"
+        onPress={() => navigation.navigate("LoginScreen")}
       />
     </View>
   );
