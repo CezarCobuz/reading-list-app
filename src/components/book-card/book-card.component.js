@@ -13,6 +13,7 @@ import { ScrollRow } from "../scroll-row/scroll-row.component";
 import { Spacing } from "../spacing/spacing.component";
 import { StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native";
+import _ from "lodash";
 
 const outlinedButtonSize = defaultSpacingUnit * 2.5;
 
@@ -85,7 +86,9 @@ export const BookCardComponent = ({ book }) => {
                   setAppStore({ ...appStore, readingList: newFavorites });
                 }
               } else {
-                // Remove from favorites - handle second press
+                // Remove from favorites
+                const newFavorites = _.without([...readingList], book);
+                setAppStore({ ...appStore, readingList: newFavorites });
               }
 
               setStared(!stared);
